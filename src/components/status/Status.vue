@@ -274,7 +274,7 @@ export default {
       this.data.provinces.find(i => i.name === province).cities.forEach(i => {
         this.proMapData.push({
           name: i.name + '市',
-          value: (i.confirmedNum ? i.confirmedNum : 0)
+          value: (i.confirmedNum === 0 ? null : i.confirmedNum)
         })
       })
       console.log(this.proMapData)
