@@ -7,8 +7,8 @@ import router from './router'
 // 引入axios
 import axios from 'axios'
 // 引入mock数据
-import './assets/mock/all_mock'
-import './assets/mock/new_mock'
+// import './assets/mock/all_mock'
+// import './assets/mock/new_mock'
 // 引入Echarts
 import echarts from 'echarts'
 // import 'echarts/map/js/china.js'
