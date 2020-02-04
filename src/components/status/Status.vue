@@ -154,9 +154,9 @@ export default {
     tableclick (row) {
       if (this.tableTitle !== '全国') return false
       // console.log(row)
-      this.tableTitle = row.district
+      this.tableTitle = row.district ? row.district : row
       // 得到当前省份数据
-      let provinces = this.data.provinces.find((item) => item.name === row.district)
+      let provinces = this.data.provinces.find((item) => item.name === this.tableTitle)
       // console.log(provinces)
       this.tableData = []
       provinces.cities.forEach(item => {
@@ -168,7 +168,7 @@ export default {
         })
       })
       // 获取省数据
-      this.provinceData(row.district)
+      this.provinceData(this.tableTitle)
       this.mapInit()
     },
     // 返回全国
@@ -201,9 +201,9 @@ export default {
         },
         // 提示框
         tooltip: {
-          trigger: this.tableTitle === '全国' ? 'item' : 'none', // item数据项图形触发
+          trigger: 'item', // item数据项图形触发
           formatter: function (data) { // 设置提示框
-            return data.name + '<br/>' + '确诊:' + data.value
+            return (data.name + '<br/>' + '确诊:' + data.value)
           }
         },
         // legend: { // 左上角名称
@@ -246,7 +246,7 @@ export default {
             mapType: this.tableTitle === '全国' ? 'china' : this.tableTitle,
             roam: false,
             itemStyle: {
-              normal: { label: { show: true } },
+              // normal: { label: { show: true } },
               emphasis: { label: { show: true } }
             },
             data: (this.tableTitle === '全国' ? this.natMapData : this.proMapData)
@@ -258,9 +258,12 @@ export default {
       // 设置点击事件
       myChart.on('click', (data) => {
         if (this.tableTitle === '全国') {
+          // 刷新表格
+          this.tableclick(data.name)
           this.tableTitle = data.name
           // 获取省数据
           this.provinceData(data.name)
+          // 刷新地图
           this.mapInit()
         }
       })
