@@ -15,7 +15,6 @@
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
-    <script src="http://gallery.echartsjs.com/dep/echarts/map/js/china.js"></script>
     <% } %>
   </head>
   <body>
@@ -26,3 +25,7 @@
     <!-- built files will be auto injected -->
   </body>
 </html>
+<% if(htmlWebpackPlugin.options.isProd){ %>
+  <script src="http://gallery.echartsjs.com/dep/echarts/map/js/china.js"></script>
+
+<% } %>

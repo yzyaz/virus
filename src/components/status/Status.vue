@@ -275,10 +275,10 @@ export default {
       let arr = this.data.provinces.find(i => i.name === province)
       arr.cities.forEach(i => {
         var ctiy = ''
-        if (arr.name === '重庆') {
-          ctiy = ((i.name === '城口' || i.name === '丰都' || i.name === '垫江' || i.name === '云阳' || i.name === '奉节' || i.name === '巫山' || i.name === '巫溪') ? (i.name + '县') : (i.name + '区'))
-        } else if (i.name === '忠县') {
+        if (i.name === '忠县') {
           ctiy = i.name
+        } else if (arr.name === '重庆') {
+          ctiy = ((i.name === '城口' || i.name === '丰都' || i.name === '垫江' || i.name === '云阳' || i.name === '奉节' || i.name === '巫山' || i.name === '梁平' || i.name === '武隆' || i.name === '巫溪') ? (i.name + '县') : (i.name + '区'))
         } else {
           ctiy = (arr.name === '北京' || arr.name === '上海' || arr.name === '天津') ? (i.name + '区') : (i.name + '市')
         }
