@@ -203,7 +203,7 @@ export default {
         tooltip: {
           trigger: 'item', // item数据项图形触发
           formatter: function (data) { // 设置提示框
-            return (data.name + '<br/>' + '确诊:' + data.value)
+            return (data.name + '<br/>' + '确诊:' + (data.value ? data.value : 0))
           }
         },
         // legend: { // 左上角名称
@@ -274,7 +274,7 @@ export default {
       this.data.provinces.find(i => i.name === province).cities.forEach(i => {
         this.proMapData.push({
           name: i.name + '市',
-          value: i.confirmedNum
+          value: (i.confirmedNum ? i.confirmedNum : 0)
         })
       })
       console.log(this.proMapData)

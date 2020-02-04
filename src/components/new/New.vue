@@ -7,7 +7,7 @@
         v-infinite-scroll="load"
         infinite-scroll-disabled="disabled"
       >
-        <li v-for="(item, i) in newsList" class="list-item" :key="i" @click="newsDetails(item)">
+        <li v-for="(item, i) in newsList" class="list-item" :key="i" >
           <div class="timeInfo">
             <b>{{ (item.event_time)+'000'-0 | timeStr}}</b>
             <!-- <i>{{ item.pubDateStr }} {{ item.pubDate | timeStr }}</i> -->
@@ -41,7 +41,7 @@ export default {
     //     'https://file1.dxycdn.com/2020/0127/794/3393185296027391740-115.json'
     //   )
       let { data: res } = await this.$http.get('http://yuzhiyong.life:8777/new')
-      //   console.log('res2', JSON.parse(res.data[0].content).sub_raw_datas)
+      console.log('res2', JSON.parse(res.data[0].content).sub_raw_datas)
       let list = JSON.parse(res.data[0].content).sub_raw_datas
       //   this.data = JSON.parse(res.data[0].content).sub_raw_datas
       list.forEach(item => {
@@ -49,7 +49,7 @@ export default {
       })
       // console.log(this.data)
       this.newsList = this.data.slice(0, this.newNum)
-    //   console.log(this.data)
+      // console.log(this.newsList)
     },
     load () {
       this.loading = true
@@ -58,12 +58,12 @@ export default {
         this.newsList = this.data.slice(0, this.newNum)
         this.loading = false
       }, 900)
-    },
-    // 点击事件
-    newsDetails (item) {
-    //   console.log(1)
-      location.assign(item.sourceUrl)
     }
+    // 点击事件
+    // newsDetails (item) {
+    //   console.log(item)
+    //   location.assign(item.sourceUrl)
+    // }
   },
   created () {
     this.getNews()
