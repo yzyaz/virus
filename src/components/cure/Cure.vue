@@ -102,6 +102,7 @@ export default {
 }
 .cureApp {
   display: block;
+  position: relative;
   margin: 20px;
   padding: 15px;
   height: unset;
@@ -113,8 +114,8 @@ export default {
     vertical-align: middle;
   }
   .name {
-    float: left;
-    margin-left: 15px;
+    position: absolute;
+    left: 87px;
     .cure_title {
       font-size: 18px;
       font-weight: 500;
@@ -123,9 +124,10 @@ export default {
     }
   }
   .cure_consult {
-    float: right;
+    position: absolute;
+    right: 10px;
     top: 50%;
-    transform: translateY(50%);
+    transform: translateY(-50%)
   }
 }
 </style>
