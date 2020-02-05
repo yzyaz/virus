@@ -110,24 +110,24 @@ export default {
       let { data: res } = await this.$http.get(
         'http://yuzhiyong.life:8777/status'
       )
+      // console.log('zr', res.forum.extra.ncov_string_list)
       console.log(JSON.parse(res.forum.extra.ncov_string_list))
       this.data = JSON.parse(res.forum.extra.ncov_string_list)
       this.timeStr = this.data.updateTime + '000' - 0
       // console.log('data', this.data, this.timeStr)
       // 确诊 疑似 死亡 治愈
-      let nationwide0 = this.data.nationwide[0]
-      this.affirm = nationwide0.confirmedNum
-      this.suspect = nationwide0.suspectedNum
-      this.die = nationwide0.deathsNum
-      this.cure = nationwide0.curesNum
+      let nationwide0 = this.data.nationTotal
+      this.affirm = nationwide0.confirmedTotal
+      this.suspect = nationwide0.suspectedTotal
+      this.die = nationwide0.deathsTotal
+      this.cure = nationwide0.curesTotal
       // 较昨日
-      let nationwide1 = this.data.nationwide[1]
-      this.addAffirm =
-        nationwide0.confirmedNum - nationwide1.confirmedNum
-      this.addSuspect =
-        nationwide0.suspectedNum - nationwide1.suspectedNum
-      this.addDie = nationwide0.deathsNum - nationwide1.deathsNum
-      this.addCure = nationwide0.curesNum - nationwide1.curesNum
+      // var yesterday=res.forum.extra.ncov_string_list
+      let nationwide1 = this.data.nationwideIncr
+      this.addAffirm = nationwide1.confirmedIncr
+      this.addSuspect = nationwide1.suspectedIncr
+      this.addDie = nationwide1.deathsIncr
+      this.addCure = nationwide1.curesIncr
       // 全国表格数据
       this.tableData = []
       this.data.provinces.forEach(item => {
