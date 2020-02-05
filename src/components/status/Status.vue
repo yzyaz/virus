@@ -275,7 +275,7 @@ export default {
       let arr = this.data.provinces.find(i => i.name === province)
       arr.cities.forEach(i => {
         this.proMapData.push({
-          name: i.name,
+          name: i.name === '浦东' ? (i.name + '新区') : i.name,
           value: (i.confirmedNum === 0 ? null : i.confirmedNum)
         })
       })
